@@ -15,7 +15,7 @@ An easier way to pass JSON content into a HTML table using jQuery
 
 Don't have time? Here we go!
 
-1. First off, create a `<table>` like this one. Note to that `<tr>` element with a class `mountable-model` listed below. This will be used by **MounTable**.
+- First off, create a `<table>` like this one. Note to that `<tr>` element with a class `mountable-model` listed below. This will be used by **MounTable**.
 ```
 <table class="table" id="example1">
 	<thead>
@@ -34,7 +34,7 @@ Don't have time? Here we go!
 	</tbody>
 </table>
 ```
-2. Let's catch a small JSON code (or object) to be used in this example. Please note that the **key names** listed below **must be the same as** declared on the **input names** listed above.
+- Let's catch a small JSON code (or object) to be used in this example. Please note that the **key names** listed below **must be the same as** declared on the **input names** listed above.
 ```
 var jsonContentSimple =
 [
@@ -60,7 +60,7 @@ var jsonContentSimple =
     }
 ];
 ```
-3. Here we go. Time to start **MounTable**. Note that the **ID** `#example1` ** listed below is the table's ID**.
+- Here we go. Time to start **MounTable**. Note that the **ID** `#example1` ** listed below is the table's ID**.
 ```
 $('#example1').mounTable(jsonContentSimple);
 ```
