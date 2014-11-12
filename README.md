@@ -9,6 +9,12 @@ An easier way to pass JSON content into a HTML table using jQuery
   - Allows callback functions;
   - jQuery required.
 
+---
+
+[View the demo](https://guimadaleno.github.io/demos/mountable)
+
+---
+
 ### How to use?
 
 ##### Turbo mode
@@ -16,7 +22,7 @@ An easier way to pass JSON content into a HTML table using jQuery
 Don't have time? Here we go!
 
 - First off, create a `<table>` like this one. Note to that `<tr>` element with a class `mountable-model` listed below. This will be used by **MounTable**.
-```
+```html
 <table class="table" id="example1">
 	<thead>
 		<tr>
@@ -35,7 +41,7 @@ Don't have time? Here we go!
 </table>
 ```
 - Let's catch a small JSON code (or object) to be used in this example. Please note that the **key names** listed below **must be the same as** declared on the **input names** listed above.
-```
+```json
 var jsonContentSimple =
 [
     {
@@ -61,15 +67,17 @@ var jsonContentSimple =
 ];
 ```
 - Here we go. Time to start **MounTable**. Note that the **ID** `#example1` ** listed below is the table's ID**.
-```
+```javascript
 $('#example1').mounTable(jsonContentSimple);
 ```
 And that's all! Enjoy your content in your table.
 
+---
+
 ##### Complete mode
 Do you want to fully customize **MounTable**? Here's all the options you'll need:
 
-```
+```javascript
 $('#example').mounTable(jsonContentComplex,
 {
 	/* The model class */
@@ -110,11 +118,14 @@ $('#example').mounTable(jsonContentComplex,
 });
 ```
 
+---
+
 ### Help?
 Tweet me: **@guimadaleno**
 
-License
-----
-GNU
+---
+
+### License
+GNU GPL
 
 Peace!
