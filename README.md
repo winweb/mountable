@@ -121,7 +121,7 @@ $('#example').mounTable(jsonContentComplex,
 ---
 
 ### Help?
-Tweet me: **@guimadaleno**
+Tweet me: [@guimadaleno](http://twitter.com/guimadaleno)
 
 ---
 
