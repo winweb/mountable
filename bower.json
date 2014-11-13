@@ -5,8 +5,9 @@
 	"main": "mountable.js",
 	"ignore":
 	[
-		".gitignore",
-		".json"
+		"**/.*",
+		"*.md",
+		"bower.json"
 	],
 	"dependencies":
 	{
