@@ -1,4 +1,4 @@
-#MounTable.js
+#mountable.js
 
 ### What is it?
 

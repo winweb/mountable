@@ -4,7 +4,7 @@
 	<head>
 
 		<meta charset="UTF-8">
-		<title>MounTable.js</title>
+		<title>mountable.js</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 		<style>
 			.table {margin-bottom: 0;}
@@ -16,14 +16,42 @@
 
 		<div style="width: 960px; margin: auto; margin-top: 40px;">
 
-			<h1>MounTable.js</h1>
+			<h1>mountable.js</h1>
 			<p class="lead">An easier way to pass JSON content into a HTML table using jQuery</p>
 
 			<hr>
 
 			<!-- Example table two -->
 
-			<h4>A quite simple example</h4>
+			<h3>A quite simple example</h3>
+			<h4>The JSON file</h4>
+
+<pre>
+var jsonContentSimple =
+[
+    {
+        "first_name": "John",
+        "last_name": "Appleseed",
+        "email": "john@appleseed.com"
+    },
+    {
+    	"first_name": "João",
+    	"last_name": "Canabrava",
+    	"email": "joao@canabrava.com"
+    },
+    {
+        "first_name": "Patrick",
+        "last_name": "Grapeseed",
+        "email": "patrick@grapeseed.com"
+    },
+    {
+    	"first_name": "Xingling",
+    	"last_name": "Ping Pong",
+    	"email": "xingling@pingpong.com"
+    }
+];</pre>
+
+			<h4>The result</h4>
 			<div class="well">
 				<form action="#">
 					<table class="table" id="example1">
@@ -49,7 +77,67 @@
 
 			<!-- Example table two -->
 
-			<h4>A bit more complex example</h4>
+			<h3>Example two: a bit more complex</h3>
+			<h4>The JSON file</h4>
+<pre>
+var jsonContentComplex =
+[
+    {
+        "number": 1,
+        "first_name": "John",
+        "last_name": "Appleseed",
+        "email": "john@appleseed.com",
+        "sex": "Male",
+        "techniques":
+        [
+        	"Can vanish",
+        	"Is strong",
+        	"Like Apples"
+        ],
+        "location": "United States"
+    },
+    {
+    	"number": 1,
+    	"first_name": "João",
+    	"last_name": "Canabrava",
+    	"email": "joao@canabrava.com",
+    	"sex": "Male",
+    	"techniques":
+    	[
+    		"Is always drunk",
+    		"Stronger liver",
+    		"Caipirinha adept"
+    	],
+    	"location": "Brazil"
+    },
+    {
+        "number": 3,
+        "first_name": "Patrick",
+        "last_name": "Grapeseed",
+        "email": "patrick@grapeseed.com",
+        "sex": "Male",
+        "techniques":
+        [
+        	"Hates grapes",
+        	"It has a grape head"
+        ],
+        "location": "United Kingdom"
+    },
+    {
+    	"number": 4,
+    	"first_name": "Xingling",
+    	"last_name": "Ping Pong",
+    	"email": "xingling@pingpong.com",
+    	"sex": "Female",
+    	"techniques":
+    	[
+    		"Works at AliExpress",
+    		"Slavery adept"
+    	],
+    	"location": "China"
+    }
+];</pre>
+			<h4>The result</h4>
 			<div class="well">
 				<form action="#">
 					<table class="table" id="example2">
