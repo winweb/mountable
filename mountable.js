@@ -1,5 +1,5 @@
 /*
-	Mountable
+	MounTable.js
 
 	Developed by Guilherme Augusto Madaleno <guimadaleno@me.com>
 	www.guimadaleno.com

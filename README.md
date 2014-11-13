@@ -1,4 +1,4 @@
-#GM's MounTable
+#MounTable.js
 
 ### What is it?
 
