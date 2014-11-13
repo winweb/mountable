@@ -15,6 +15,13 @@ An easier way to pass JSON content into a HTML table using jQuery
 
 ---
 
+### Installation
+
+- Install via [Bower](http://bower.io) ```bower install --save mountable```
+- Download via [GitHub](https://github.com/guimadaleno/mountable/archive/master.zip)
+
+---
+
 ### How to use?
 
 ##### Turbo mode
