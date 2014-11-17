@@ -9,137 +9,223 @@
 
 $.fn.mounTable = function (content, options)
 {
-	var	element,
-		line,
-		modelContent,
-		modelOrigin,
-		modelSaved,
-		selectOps;
 
-	var debugMode = (options && options.noDebug) ? false : true;
-	var modelClass = (options && options.model) ? options.model : ".mountable-model";
-	var modelLength = Object.keys($(table).find(modelClass)).length;
-	var modelNewLine = (options && options.addLine && options.addLine.button) ? options.addLine.button : ".mountable-new-line";
-	var table = this;
-
-	if (content && content.length)
+	var opt =
 	{
-		if (!$(table).length)
+		debug: (options && options.noDebug) ? false : true,
+		fn:
 		{
-			if (debugMode)
+			element: 		"",
+			model:
 			{
-				console.log('MounTable: Table ' + table.selector + ' not found!');
-			}
+				class: 		(options && options.model) ? options.model : ".mountable-model",
+				content: 	"",
+				length: 	Object.keys($(this).find((options && options.model) ? options.model : ".mountable-model")).length,
+				newLine: 	(options && options.addLine && options.addLine.button) ? options.addLine.button : ".mountable-new-line",
+				origin: 	"",
+				saved: 		"",
+			},
+			table: this
 		}
-		else
+	};
+
+	var fn =
+	{
+
+		init: function ()
 		{
-			$.each(content, function (i, line)
+
+			if (content && content.length)
 			{
-				if (line)
+
+				if (!$(opt.fn.table).length)
 				{
-					$.each(line, function (j, input)
+
+					if (opt.debug)
 					{
-						if ($.type(input) === 'string' || $.type(input) === 'number')
-						{
-							element = $(table).find(modelClass).find('input[name="' + j + '[]"], input[name="' + j + '"], select[name="' + j + '[]"], select[name="' + j + '"]');
-							if (element.prop('tagName') == "INPUT")
-							{
-								if (element.attr('type') == 'text')
-								{
-									element.attr('value', input);
-								}
-								else if (element.attr('type') == 'checkbox')
-								{
-									if (element.length > 1)
-									{
-										$.each(element, function (k, checkbox)
-										{
-											if (checkbox.value == input)
-											{
-												checkbox.setAttribute('checked', 'checked');
-											}
-											else
-											{
-												checkbox.removeAttribute('checked');
-											}
-										});
-									}
-								}
-							}
-							else if (element.prop('tagName') == "SELECT")
-							{
-								element.val(input);
-								element.children('option').attr('selected', false);
-								element.children('option[value="' + input + '"]').attr('selected', 'selected');
-							}
-						}
-						else if ($.type(input) === 'array')
-						{
-							element = $(table).find(modelClass).find('select[name="' + j + '[]"], select[name="' + j + '"]');
-							if (element.prop('tagName') == "SELECT")
-							{
-								selectOpts = false;
-								$.each(input, function(l, value)
-								{
-									selectOpts += '<option value="' + value + '">' + value + '</option>';
-								});
-								element.html(selectOpts);
-								element.attr('data-mountable-filled-up-selectbox', 'yes');
-							};
-						}
-					});
-					modelContent = $(table).find(modelClass).html();
-					$(table).find(modelClass).parent().append('<tr>' + modelContent + '</tr>');
-					$(table).find(modelClass + ' input').each(function()
-					{
-						if ($(this).prop('type') == "text")
-						{
-							$(this).attr('value', "");
-						}
-						else if ($(this).prop('type') == "checkbox")
-						{
-							$(this).each(function()
-							{
-								$(this).attr('checked', false);
-							});
-						}
-					});
-					$(table).find(modelClass + ' select').each(function()
-					{
-						$(this).find('option').each(function()
-						{
-							$(this).removeAttr('selected');
-						});
-						$(this).attr('value', "");
-						if ($(this).attr('data-mountable-filled-up-selectbox') == 'yes')
-						{
-							$(this).html(' ');
-						}
-					});
+						console.log('MounTable: Table ' + opt.fn.table.selector + ' not found!');
+					}
+
 				}
-			});
-		}
+				else
+				{
 
-		modelSaved = '<tr>' + $(table).find(modelClass).html() + '</tr>';
-		modelOrigin = $(table).find(modelClass).parent();
+					$.each(content, function (i, line)
+					{
 
-		if (debugMode)
-		{
-			console.log('MounTable: content successfully mounted on ' + table.selector);
-		}
+						if (line)
+						{
 
-		deleteLine = function ()
+							$.each(line, function (j, input)
+							{
+
+								if ($.type(input) === 'string' || $.type(input) === 'number')
+								{
+
+									opt.fn.element = $(opt.fn.table).find(opt.fn.model.class).find('input[name="' + j + '[]"], input[name="' + j + '"], select[name="' + j + '[]"], select[name="' + j + '"]');
+
+									if (opt.fn.element.prop('tagName') == "INPUT")
+									{
+
+										if (opt.fn.element.attr('type') == 'text')
+										{
+											opt.fn.element.attr('value', input);
+										}
+										else if (opt.fn.element.attr('type') == 'checkbox')
+										{
+
+											if (opt.fn.element.length > 1)
+											{
+
+												$.each(opt.fn.element, function (k, checkbox)
+												{
+
+													if (checkbox.value == input)
+													{
+														checkbox.setAttribute('checked', 'checked');
+													}
+													else
+													{
+														checkbox.removeAttribute('checked');
+													}
+
+												});
+
+											}
+
+										}
+
+									}
+									else if (opt.fn.element.prop('tagName') == "SELECT")
+									{
+
+										opt.fn.element.val(input);
+										opt.fn.element.children('option').attr('selected', false);
+										opt.fn.element.children('option[value="' + input + '"]').attr('selected', 'selected');
+
+									}
+
+								}
+								else if ($.type(input) === 'array')
+								{
+
+									opt.fn.element = $(opt.fn.table).find(opt.fn.model.class).find('select[name="' + j + '[]"], select[name="' + j + '"]');
+
+									if (opt.fn.element.prop('tagName') == "SELECT")
+									{
+
+										selectOpts = false;
+
+										$.each(input, function(l, value)
+										{
+											selectOpts += '<option value="' + value + '">' + value + '</option>';
+										});
+
+										opt.fn.element.html(selectOpts);
+										opt.fn.element.attr('data-mountable-filled-up-selectbox', 'yes');
+
+									};
+
+								}
+
+							});
+
+							opt.fn.model.dom = $(opt.fn.table).find(opt.fn.model.class);
+							opt.fn.model.content = $(opt.fn.table).find(opt.fn.model.class).html();
+
+							$(opt.fn.table).find(opt.fn.model.class).parent().append('<tr>' + opt.fn.model.content + '</tr>');
+
+							$(opt.fn.table).find(opt.fn.model.class + ' input').each(function()
+							{
+
+								if ($(this).prop('type') == "text")
+								{
+									$(this).attr('value', "");
+								}
+								else if ($(this).prop('type') == "checkbox")
+								{
+
+									$(this).each(function()
+									{
+										$(this).attr('checked', false);
+									});
+
+								}
+
+							});
+
+							$(opt.fn.table).find(opt.fn.model.class + ' select').each(function()
+							{
+
+								$(this).find('option').each(function()
+								{
+									$(this).removeAttr('selected');
+								});
+
+								$(this).attr('value', "");
+
+								if ($(this).attr('data-mountable-filled-up-selectbox') == 'yes')
+								{
+									$(this).html(' ');
+								}
+
+							});
+
+						}
+
+					});
+
+				}
+
+				opt.fn.model.saved = '<tr>' + $(opt.fn.table).find(opt.fn.model.class).html() + '</tr>';
+				opt.fn.model.origin = $(opt.fn.table).find(opt.fn.model.class).parent();
+
+				if (opt.debug)
+				{
+					console.log('MounTable: content successfully mounted on ' + opt.fn.table.selector);
+				}
+
+				$(opt.fn.model.newLine).off('click').on('click', function()
+				{
+
+					if (options.addLine.onClick && $.type(options.addLine.onClick) === "function")
+					{
+
+						if (options.addLine.onClick($(opt.fn.table).find(opt.fn.model.class)) === true)
+						{
+
+							opt.fn.model.origin.append(opt.fn.model.saved);
+							fn.deleteLine();
+
+						}
+
+					}
+
+				});
+
+				fn.deleteLine();
+				$(opt.fn.table).find(opt.fn.model.class).remove();
+
+			}
+
+		},
+
+		deleteLine: function ()
 		{
 			if (options && options.deleteLine && options.deleteLine.button)
 			{
+
 				$(options.deleteLine.button).off('click').on('click', function()
 				{
+
 					if (options.deleteLine.onClick && $.type(options.deleteLine.onClick) === "function")
 					{
+
 						if (options.deleteLine.onClick() === true)
 						{
 							$(this).parent().parent().remove();
 						}
+
 					}
 					else
 					{
@@ -147,22 +233,13 @@ $.fn.mounTable = function (content, options)
 					}
 
 				});
+
 			}
-		};
 
-		$(modelNewLine).off('click').on('click', function()
-		{
-			modelOrigin.append(modelSaved);
-			deleteLine();
-			if (options.addLine.onClick && $.type(options.addLine.onClick) === "function")
-			{
-				options.addLine.onClick();
-			}
-		});
+		}
 
-		deleteLine();
+	};
 
-		$(table).find(modelClass).remove();
+	fn.init();
 
-	}
 };

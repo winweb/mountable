@@ -197,7 +197,7 @@ var jsonContentComplex =
 	</body>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="mountable.min.js"></script>
+	<script src="mountable.js"></script>
 	<script>
 
 		$(document).ready(function()
@@ -307,7 +307,7 @@ var jsonContentComplex =
 
 				/* No console messages */
 
-				noDebug: true,
+				noDebug: false,
 
 				/* Options to your new line button */
 
@@ -320,9 +320,10 @@ var jsonContentComplex =
 
 					/* Callback function */
 
-					onClick: function ()
+					onClick: function (element)
 					{
 						console.log('Line added!');
+						return true;
 					}
 				},
 
