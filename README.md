@@ -11,7 +11,7 @@ An easier way to pass JSON content into a HTML table using jQuery
 
 ---
 
-[View the demo](https://guimadaleno.github.io/demos/mountable)
+[View the demo](https://guimadaleno.github.io/demos/mountable/demo.js)
 
 ---
 
