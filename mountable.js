@@ -1,11 +1,8 @@
-/*
-	MounTable.js
-
-	Developed by Guilherme Augusto Madaleno <guimadaleno@me.com>
-	www.guimadaleno.com
-	(C) 2014 All rights reserved
-	Licensed under GNU GPL
-*/
+/**
+ * mountable.js
+ * @author Guilherme Augusto Madaleno <guimadaleno@me.com>
+ * @version 1.0
+ */
 
 $.fn.mounTable = function (content, options)
 {
