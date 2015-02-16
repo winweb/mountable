@@ -218,7 +218,7 @@ $.fn.mounTable = function (content, options)
 					if (options.deleteLine.onClick && $.type(options.deleteLine.onClick) === "function")
 					{
 
-						if (options.deleteLine.onClick() === true)
+						if (options.deleteLine.onClick($(this).parent().parent()) === true)
 						{
 							$(this).parent().parent().remove();
 						}
