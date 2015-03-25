@@ -31,7 +31,7 @@ $.fn.mounTable = function (content, options)
                 init: function ()
                 {
 
-                    if (content && content.length)
+                    if (content && $.isNumeric(content.length))
                     {
 
                         if (!$(opt.fn.table).length)
