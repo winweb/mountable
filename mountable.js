@@ -174,36 +174,36 @@ $.fn.mounTable = function (content, options)
 
                         }
 
-                        opt.fn.model.saved = '<tr>' + $(opt.fn.table).find(opt.fn.model.class).html() + '</tr>';
-                        opt.fn.model.origin = $(opt.fn.table).find(opt.fn.model.class).parent();
+                    }
+                    
+                    opt.fn.model.saved = '<tr>' + $(opt.fn.table).find(opt.fn.model.class).html() + '</tr>';
+                    opt.fn.model.origin = $(opt.fn.table).find(opt.fn.model.class).parent();
 
-                        if (opt.debug)
+                    if (opt.debug)
+                    {
+                        console.log('MounTable: content successfully mounted on ' + opt.fn.table.selector);
+                    }
+
+                    $(opt.fn.model.newLine).off('click').on('click', function ()
+                    {
+
+                        if (options.addLine.onClick && $.type(options.addLine.onClick) === "function")
                         {
-                            console.log('MounTable: content successfully mounted on ' + opt.fn.table.selector);
-                        }
 
-                        $(opt.fn.model.newLine).off('click').on('click', function ()
-                        {
-
-                            if (options.addLine.onClick && $.type(options.addLine.onClick) === "function")
+                            if (options.addLine.onClick($(opt.fn.table).find(opt.fn.model.class)) === true)
                             {
 
-                                if (options.addLine.onClick($(opt.fn.table).find(opt.fn.model.class)) === true)
-                                {
-
-                                    opt.fn.model.origin.append(opt.fn.model.saved);
-                                    fn.deleteLine();
-
-                                }
+                                opt.fn.model.origin.append(opt.fn.model.saved);
+                                fn.deleteLine();
 
                             }
 
-                        });
+                        }
 
-                        fn.deleteLine();
-                        $(opt.fn.table).find(opt.fn.model.class).remove();
+                    });
 
-                    }
+                    fn.deleteLine();
+                    $(opt.fn.table).find(opt.fn.model.class).remove();
 
                 },
                 deleteLine: function ()
